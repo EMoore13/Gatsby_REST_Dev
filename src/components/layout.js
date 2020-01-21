@@ -6,13 +6,42 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./layout.css"
+import styled, { createGlobalStyle } from 'styled-components'
+
+const GlobalStyles = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+`;
+
+const StyledWrapper = styled.div`
+  width: 1100px;
+  padding: 0 25px;
+  margin: 25px auto;
+`;
+
+const StyledFooter = styled.footer`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  width: 100%;
+  padding: 15px 25px;
+  box-sizing: border-box;
+
+  background-color: black;
+  color: white;
+`;
 
 const Layout = ({ children }) => {
+  // Graphql Query
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,27 +54,18 @@ const Layout = ({ children }) => {
 
   return (
     <>
+      <GlobalStyles />
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <StyledWrapper>
+
         <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+
+      </StyledWrapper>
+      <StyledFooter>
+          © {new Date().getFullYear()}, In Development
+        </StyledFooter>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
