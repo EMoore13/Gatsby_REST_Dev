@@ -5,6 +5,7 @@ import SEO from "../components/seo";
 import styled from 'styled-components';
 
 import EpisodeList from '../components/EpisodeList';
+import SideMenu from '../components/SideMenu'
 
 const StyledDivider = styled.div`
   width: 100%;
@@ -16,6 +17,7 @@ const IndexPage = () => (
     <SEO title="Home" />
     <StyledDivider>
       <EpisodeList />
+      <SideMenu />
     </StyledDivider>
   </Layout>
 );

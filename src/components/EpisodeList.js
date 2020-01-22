@@ -24,7 +24,7 @@ const StyledTitle = styled(Link)`
     margin: 0;
     font-weight: bold;
     font-size: 30px;
-    font-family: 'Quattrocentos Sans', sans-serif;
+    font-family: 'Quattrocento Sans', sans-serif;
     text-decoration: none;
     color: black;
     
@@ -54,7 +54,7 @@ const ButtonLink = styled(Link)`
     color: white;
     font-size: 12px;
     text-decoration: none;
-    font-family: 'Quattrocentos Sans', sans-serif;
+    font-family: 'Quattrocento Sans', sans-serif;
 
     transition: 0.2s ease;
 
@@ -64,9 +64,17 @@ const ButtonLink = styled(Link)`
 `;
 
 const StyledDate = styled.div`
-    font-family: 'Quattrocentos Sans', sans-serif;
+    font-family: 'Quattrocento Sans', sans-serif;
     font-size: 12px;
     color: black;
+    margin: 0;
+`;
+
+const StyledIntro = styled.p`
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 14px;
+    color: black;
+    line-height: 18px;
     margin: 0;
 `;
 
@@ -80,6 +88,7 @@ const EpisodeList = () => (
                 title
                 release_date
                 episode_id
+                opening_crawl
               }
             }
           }
@@ -87,7 +96,7 @@ const EpisodeList = () => (
       }  
     `} render={props => (
             <EpisodeContainer>
-                {props.allRestApiApiFilms.edges[0].node.results.map(item => (
+                {props.allRestApiApiFilms.edges[0].node.results.sort((a, b) => (a.episode_id > b.episode_id) ? 1 : -1).map(item => (
                     <EpisodeTile key={item.episode_id}>
                         <TopSection>
                             <StyledTitle to={`/films/${item.episode_id}`}>
@@ -104,7 +113,11 @@ const EpisodeList = () => (
                                 Released: {item.release_date}
                             </StyledDate>
 
-                            
+                            <br />
+
+                            <StyledIntro>
+                                {item.opening_crawl}
+                            </StyledIntro>
                         </BotSection>
 
                     </EpisodeTile>

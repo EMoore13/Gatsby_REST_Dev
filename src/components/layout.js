@@ -11,6 +11,8 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import styled, { createGlobalStyle } from 'styled-components'
 
+import './fonts.css';
+
 const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
@@ -27,10 +29,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledFooter = styled.footer`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: static;
 
   width: 100%;
   padding: 15px 25px;

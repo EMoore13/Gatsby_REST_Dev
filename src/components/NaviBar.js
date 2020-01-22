@@ -6,7 +6,7 @@ const NavContainer = styled.div`
     display: flex;
     align-items: center;
     color: white;
-    font-family: 'Quattrocento Sans', sans-serif;
+    font-family: "Quattrocento Sans";
 `;
 
 const NavLink = styled(Link)`
@@ -28,7 +28,6 @@ const NaviBar = () => (
         <NavLink to="/people">People</NavLink>
         <NavLink to="/planets">Planets</NavLink>
         <NavLink to="/about-us">About Us</NavLink>
-        <NavLink to="/page-2">Another Link</NavLink>
         <NavLink to="/login">Login</NavLink>
     </NavContainer>
 );
