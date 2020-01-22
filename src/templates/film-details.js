@@ -72,7 +72,7 @@ const SectionHeader = styled.h4`
     margin: 0 0 10px 0;
 `;
 
-const FilmPage = ({ pageContext, peopleData }) => (
+const FilmPage = ({ pageContext }) => (
     <Layout>
         <Divider>
             <PanelContainer>
@@ -85,23 +85,17 @@ const FilmPage = ({ pageContext, peopleData }) => (
                         {/*Characters*/}
                         <InfoSection>
                             <SectionHeader>Characters:</SectionHeader>
-                            {pageContext.characters.slice(0, 5).map(char => (
-                                <p>{char}</p>
+                            {pageContext.characters.slice(0, 5).map(person => (
+                                <p>{person}</p>
                             ))}
                         </InfoSection>
                         {/*Species*/}
                         <InfoSection>
                             <SectionHeader>Species:</SectionHeader>
-                            {pageContext.species.slice(0, 5).map(spec => (
-                                <p>{spec}</p>
-                            ))}
                         </InfoSection>
                         {/*Planets*/}
                         <InfoSection>
                             <SectionHeader>Planets:</SectionHeader>
-                            {pageContext.planets.slice(0, 5).map(planet => (
-                                <p>{planet}</p>
-                            ))}
                         </InfoSection>
                     </InfoContainer>
                     <hr />

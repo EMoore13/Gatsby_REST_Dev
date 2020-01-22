@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     return graphql(`
     {
-        allRestApiApiFilms {
+        films: allRestApiApiFilms {
           edges {
             node {
               results {
@@ -24,13 +24,24 @@ exports.createPages = ({ graphql, actions }) => {
             }
           }
         }
+
+        people: allRestApiApiPeople {
+            edges {
+              node {
+                results {
+                  url
+                  name
+                }
+              }
+            }
+          }
     }
     `, { limit: 1000 }).then(result => {
         if (result.errors) {
             throw result.errors
         }
 
-        result.data.allRestApiApiFilms.edges[0].node.results.forEach(item => {
+        result.data.films.edges[0].node.results.forEach(item => {
 
             createPage({
                 path: `films/${item.episode_id}`,
