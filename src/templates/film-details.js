@@ -12,7 +12,7 @@ const PanelContainer = styled.div`
     flex-basis: 66%;
     display: flex;
     flex-direction: column;
-`
+`;
 
 const EpisodePanel = styled.div`
     width: 100%;
@@ -77,30 +77,30 @@ const FilmPage = ({ pageContext }) => (
         <Divider>
             <PanelContainer>
                 <EpisodePanel>
-                    <TitleFont>{pageContext.title}</TitleFont>
+                    <TitleFont>{pageContext.item.title}</TitleFont>
                     <hr />
-                    <ReleaseDate>{pageContext.release_date}</ReleaseDate>
-                    <CrawlText>{pageContext.opening_crawl}</CrawlText>
+                    <ReleaseDate>{pageContext.item.release_date}</ReleaseDate>
+                    <CrawlText>{pageContext.item.opening_crawl}</CrawlText>
                     <InfoContainer>
                         {/*Characters*/}
                         <InfoSection>
                             <SectionHeader>Characters:</SectionHeader>
-                            {pageContext.characters.slice(0, 5).map(person => (
-                                <p>{person}</p>
-                            ))}
+                            {pageContext.ppData.slice(0, 3).map(p => <p>{p.name}</p>)}
                         </InfoSection>
                         {/*Species*/}
                         <InfoSection>
                             <SectionHeader>Species:</SectionHeader>
+                            {pageContext.spData.slice(0, 3).map(p => <p>{p.name}</p>)}
                         </InfoSection>
                         {/*Planets*/}
                         <InfoSection>
                             <SectionHeader>Planets:</SectionHeader>
+                            {pageContext.pData.slice(0, 2).map(p => <p>{p.name}</p>)}
                         </InfoSection>
                     </InfoContainer>
                     <hr />
-                    <LittleText>Directed by: {pageContext.director}</LittleText>
-                    <LittleText>Produced by: {pageContext.producer}</LittleText>
+                    <LittleText>Directed by: {pageContext.item.director}</LittleText>
+                    <LittleText>Produced by: {pageContext.item.producer}</LittleText>
                 </EpisodePanel>
             </PanelContainer>
         </Divider>
